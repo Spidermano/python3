@@ -21,15 +21,12 @@ def hey(name):
     ]
 })
 
-@app.route('/mess', methods=["GET"])
-def verify():
-    #webhook verification
-    if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.challenge'):
-        if not request.args.get('hub.verify_token') == 'Hello':
-            return 'verification token mismatch', 403
-        return request.args.get('hub.challenge'), 200
-    return 'Hello World',200
-
+@app.route('/fb', methods=["GET"])
+def fb():
+    if request.args.get('hub.verify_token') == 'Hello':
+        return request.args.get('hub.challenge')
+    else:
+        return 'Erorr'
 
     
 if __name__=="__main__":
