@@ -20,14 +20,6 @@ def hey(name):
     {"text": rnd.choice(message) + str(name)}
     ]
 })
-
-@app.route('/fb', methods=["GET"])
-def fb():
-    if request.args.get('hub.verify_token') == 'Hello':
-        return request.args.get('hub.challenge')
-    else:
-        return 'Erorr'
-
     
 if __name__=="__main__":
     app.debug=True
